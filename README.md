@@ -9,3 +9,4 @@ Equipo de Desarrollo:
 - [Escobar Cárdenas Carlos Leonardo](https://github.com/cleonardoescobarc)
 - [Guevara Quintana Jenkins Jhoseph](https://github.com/Loteba)
 - [Lazaro Rios Jose](https://github.com/JoseLazaroRios)"# ProyectoFinal--MultipurposeTimeManagement" 
+"# ProyectoFinal--MultipurposeTimeManagement" 
