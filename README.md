@@ -8,5 +8,4 @@ Equipo de Desarrollo:
 - [Crespo Soto, Fred Jhosseph](https://github.com/Fred-Crespo)
 - [Escobar Cárdenas Carlos Leonardo](https://github.com/cleonardoescobarc)
 - [Guevara Quintana Jenkins Jhoseph](https://github.com/Loteba)
-- [Lazaro Rios Jose](https://github.com/JoseLazaroRios)"# ProyectoFinal--MultipurposeTimeManagement" 
-"# ProyectoFinal--MultipurposeTimeManagement" 
+- [Lazaro Rios Jose](https://github.com/JoseLazaroRios)
