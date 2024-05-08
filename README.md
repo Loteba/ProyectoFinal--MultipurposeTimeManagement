@@ -1,3 +1,5 @@
+![image](https://github.com/Loteba/ProyectoFinal--MultipurposeTimeManagement/assets/150807495/0f7df852-a383-41d0-987c-dce6bbd48430)
+
 Título del Proyecto: Gestor de Tiempo Multipropósito
 
 Descripción:
