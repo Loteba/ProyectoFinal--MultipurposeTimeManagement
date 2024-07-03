@@ -8,7 +8,7 @@ import tkinter as tk
 import sqlite3
 
 
-#inicio de secion
+# inicio de secion
 def login():
     username = entry_username.get()
     password = entry_password.get()
@@ -103,7 +103,6 @@ tk.Button(root, text="Register", command=register).grid(row=2, column=0)
 
 root.mainloop()
 
-
 root = Tk()
 root.geometry("900x500")
 root.resizable(height=False, width=False)
@@ -129,8 +128,6 @@ RelojIMGLabel = ""
 día = ""
 Tiempo = 0
 Tiempo_ = 0
-
-
 
 
 # MENU
@@ -160,7 +157,6 @@ def Menu_Hamburguesa():
                        fg="white", border=0, bg="#12c4c0", activeforeground="#262626", activebackground="#0f9d9a",
                        cursor="hand2")
     miButton4.place(x=0, y=228)
-
 
     def EncimaInicio(arg):
         miButton.config(bg="#0f9d9a")
@@ -206,7 +202,6 @@ def Menu_Hamburguesa():
     CloseIMG = PhotoImage(file=r"Fotos InterfacesGraficas\close.png")
     Button(menu, image=CloseIMG, border=0, command=lambda: menu.destroy(), bg="#12c4c0", activebackground="#12c4c0",
            cursor="hand2").place(x=5, y=10)
-
 
 
 # INICIO
@@ -1081,33 +1076,39 @@ def ReiniciarTemp():
     TempLabel.config(text=f"{HorasTemp}:{MinutosTemp}:{SegundosTemp}")
     BotonPausaPlaycommand = BotonPausaPlayTemp["command"]
     BotonPausaPlaycommand = str(BotonPausaPlaycommand)
-    BotonPausaPlaycommand = "".join([i for i in BotonPausaPlaycommand if not i.isdigit()]) 
+    BotonPausaPlaycommand = "".join([i for i in BotonPausaPlaycommand if not i.isdigit()])
     if BotonPausaPlaycommand == "PlayTemp":
         ReinicioTemp = False
 
+
 def PlayTemp():
-    global FrameTemp,SegundosTemp,MinutosTemp,BotonPausaPlayTemp,ImagenTemp,ReinicioTemp,Terminado,RelojImage
-    global HorasTemp,PausaTemp,CorriendoTemp,EliminarTempButton,BotonReiniciarTemp,MilisegundosTemp,FrameTempTerminado
+    global FrameTemp, SegundosTemp, MinutosTemp, BotonPausaPlayTemp, ImagenTemp, ReinicioTemp, Terminado, RelojImage
+    global HorasTemp, PausaTemp, CorriendoTemp, EliminarTempButton, BotonReiniciarTemp, MilisegundosTemp, FrameTempTerminado
+
     def EliminarTemp():
-        global PausaTemp,CorriendoTemp,ReinicioTemp
+        global PausaTemp, CorriendoTemp, ReinicioTemp
         PausaTemp = False
         ReinicioTemp = False
         CorriendoTemp = False
         Temporizador()
+
     if len(FrameTemp.winfo_children()) == 9:
         for i in FrameTemp.winfo_children()[1:]:
             i.destroy()
     if len(FrameTemp.winfo_children()) == 1:
-        EliminarTempButton = Button(FrameTemp,command=EliminarTemp,image=CerrarIMG,border=0,bg="white",cursor="hand2",activebackground="white")
-        EliminarTempButton.place(x=730,y=10)
-        BotonPausaPlayTemp = Button(FrameTemp,command=PausarTemp,image=PausaIMG,border=0,bg="white",activebackground="white",cursor="hand2")
-        BotonPausaPlayTemp.place(x=290,y=275)
-        BotonReiniciarTemp = Button(FrameTemp,command=ReiniciarTemp,image=ReinicioIMG,border=0,bg="white",activebackground="white",cursor="hand2")
-        BotonReiniciarTemp.place(x=360,y=275)
+        EliminarTempButton = Button(FrameTemp, command=EliminarTemp, image=CerrarIMG, border=0, bg="white",
+                                    cursor="hand2", activebackground="white")
+        EliminarTempButton.place(x=730, y=10)
+        BotonPausaPlayTemp = Button(FrameTemp, command=PausarTemp, image=PausaIMG, border=0, bg="white",
+                                    activebackground="white", cursor="hand2")
+        BotonPausaPlayTemp.place(x=290, y=275)
+        BotonReiniciarTemp = Button(FrameTemp, command=ReiniciarTemp, image=ReinicioIMG, border=0, bg="white",
+                                    activebackground="white", cursor="hand2")
+        BotonReiniciarTemp.place(x=360, y=275)
         ImagenTemp = "Pausa"
     if ImagenTemp == "Play":
         ImagenTemp = "Pausa"
-        BotonPausaPlayTemp.config(image=PausaIMG,command=PausarTemp)
+        BotonPausaPlayTemp.config(image=PausaIMG, command=PausarTemp)
     if not ReinicioTemp:
         if not PausaTemp:
             CorriendoTemp = True
@@ -1140,14 +1141,14 @@ def PlayTemp():
             if len(MinutosTemp) == 1:
                 MinutosTemp = "0" + MinutosTemp
             if len(HorasTemp) == 1:
-                HorasTemp = "0" + HorasTemp    
+                HorasTemp = "0" + HorasTemp
             TempLabel.config(text=f"{HorasTemp}:{MinutosTemp}:{SegundosTemp}")
             if not Terminado:
-                FrameTemp.after(100,PlayTemp)
+                FrameTemp.after(100, PlayTemp)
             if Terminado:
                 mixer.init()
                 mixer.music.load("Fotos InterfacesGraficas\\Ringtones.mp3")
-                mixer.music.play()  
+                mixer.music.play()
                 Terminado = False
                 HorasTemp = 0
                 MinutosTemp = 0
@@ -1156,39 +1157,44 @@ def PlayTemp():
                 BotonReiniciarTemp.destroy()
                 EliminarTempButton.destroy()
                 TempLabel.destroy()
-                FrameTempTerminado = Frame(FrameTemp,width=400,height=300,bg="white",highlightbackground="grey",highlightthickness=3)
-                FrameTempTerminado.place(x=150,y=20)
+                FrameTempTerminado = Frame(FrameTemp, width=400, height=300, bg="white", highlightbackground="grey",
+                                           highlightthickness=3)
+                FrameTempTerminado.place(x=150, y=20)
                 FrameTempTerminado.pack_propagate(False)
                 RelojImage = PhotoImage(file="Fotos InterfacesGraficas\\Reloj.png")
-                Label(FrameTempTerminado,text="Ring\nRing!!!",font=("Helvetica",40,"bold"),bg="white",fg="#12c4c0").pack()
-                Label(FrameTempTerminado,image=RelojImage,bg="white").pack()
-                Button(FrameTempTerminado,text="C A N C E L A R",font=("Helvetica",15,"bold"),bg="#12c4c0",fg="white",border=0,cursor="hand2",
-                width=31,command=CancelarTemp).place(x=8,y=250)
+                Label(FrameTempTerminado, text="Ring\nRing!!!", font=("Helvetica", 40, "bold"), bg="white",
+                      fg="#12c4c0").pack()
+                Label(FrameTempTerminado, image=RelojImage, bg="white").pack()
+                Button(FrameTempTerminado, text="C A N C E L A R", font=("Helvetica", 15, "bold"), bg="#12c4c0",
+                       fg="white", border=0, cursor="hand2",
+                       width=31, command=CancelarTemp).place(x=8, y=250)
             if (HorasTemp == "00" and
-                MinutosTemp == "00" and
-                SegundosTemp == "00"):
+                    MinutosTemp == "00" and
+                    SegundosTemp == "00"):
                 Terminado = True
         else:
             FrameTemp.after_cancel(FrameTemp)
-            BotonPausaPlayTemp.config(image=PlayIMG,command=PlayTemp)
+            BotonPausaPlayTemp.config(image=PlayIMG, command=PlayTemp)
             ImagenTemp = "Play"
             PausaTemp = False
     else:
         FrameTemp.after_cancel(FrameTemp)
-        BotonPausaPlayTemp.config(image=PlayIMG,command=PlayTemp)
+        BotonPausaPlayTemp.config(image=PlayIMG, command=PlayTemp)
         ImagenTemp = "Play"
         ReinicioTemp = False
 
+
 def CancelarTemp():
-    global CorriendoTemp,FrameTempTerminado
+    global CorriendoTemp, FrameTempTerminado
     CorriendoTemp = False
     mixer.music.stop()
     FrameTempTerminado.destroy()
     Temporizador()
 
+
 def TempArriba(arg):
-    global HorasTemp,MinutosTemp,SegundosTemp
-    global ReinicioHoras,ReinicioMinutos,ReinicioSegundos,TempLabel,IniciarBoton
+    global HorasTemp, MinutosTemp, SegundosTemp
+    global ReinicioHoras, ReinicioMinutos, ReinicioSegundos, TempLabel, IniciarBoton
     if arg == "HorasTemp":
         HorasTemp = int(HorasTemp)
         if HorasTemp < 99:
@@ -1215,11 +1221,11 @@ def TempArriba(arg):
             SegundosTemp += 1
         SegundosTemp = str(SegundosTemp)
         if len(SegundosTemp) == 1:
-            SegundosTemp = "0" + SegundosTemp  
+            SegundosTemp = "0" + SegundosTemp
     TempLabel.config(text=f"{HorasTemp}:{MinutosTemp}:{SegundosTemp}")
     if (HorasTemp == "00" and
-        MinutosTemp == "00" and
-        SegundosTemp == "00"):
+            MinutosTemp == "00" and
+            SegundosTemp == "00"):
         IniciarBoton.config(state="disabled")
     else:
         IniciarBoton.config(state="normal")
@@ -1227,9 +1233,10 @@ def TempArriba(arg):
     ReinicioMinutos = MinutosTemp
     ReinicioSegundos = SegundosTemp
 
+
 def TempAbajo(arg):
-    global HorasTemp,MinutosTemp,SegundosTemp
-    global ReinicioHoras,ReinicioMinutos,ReinicioSegundos,TempLabel
+    global HorasTemp, MinutosTemp, SegundosTemp
+    global ReinicioHoras, ReinicioMinutos, ReinicioSegundos, TempLabel
     if arg == "HorasTemp":
         HorasTemp = int(HorasTemp)
         if HorasTemp <= 0:
@@ -1256,11 +1263,11 @@ def TempAbajo(arg):
             SegundosTemp -= 1
         SegundosTemp = str(SegundosTemp)
         if len(SegundosTemp) == 1:
-            SegundosTemp = "0" + SegundosTemp  
+            SegundosTemp = "0" + SegundosTemp
     TempLabel.config(text=f"{HorasTemp}:{MinutosTemp}:{SegundosTemp}")
     if (HorasTemp == "00" and
-        MinutosTemp == "00" and
-        SegundosTemp == "00"):
+            MinutosTemp == "00" and
+            SegundosTemp == "00"):
         IniciarBoton.config(state="disabled")
     else:
         IniciarBoton.config(state="normal")
@@ -1269,11 +1276,11 @@ def TempAbajo(arg):
     ReinicioSegundos = SegundosTemp
 
 
-    
 OpenIMG = PhotoImage(file="Fotos InterfacesGraficas\\open.png")
-Button(root,image=OpenIMG,command=Menu_Hamburguesa,border=0,bg="white",activebackground="white",cursor="hand2").place(x=5,y=10)
+Button(root, image=OpenIMG, command=Menu_Hamburguesa, border=0, bg="white", activebackground="white",
+       cursor="hand2").place(x=5, y=10)
 
-root.mainloop() 
+root.mainloop()
 
 
 # Pomodoro
@@ -1288,7 +1295,7 @@ def pomodoro():
     FramePomodoro.place(x=100, y=0)
 
     tiempo_pomodoro = 25 * 60  # 25 minutos en segundos
-    tiempo_descanso = 5 * 60   # 5 minutos en segundos
+    tiempo_descanso = 5 * 60  # 5 minutos en segundos
     tiempo_actual = tiempo_pomodoro  # Comienza en modo Pomodoro
     estado = "Pomodoro"
 
@@ -1354,5 +1361,6 @@ def pomodoro():
     def reproducir_alarma():
         mixer.music.load("Fotos InterfacesGraficas\\Ringtones.mp3")
         mixer.music.play()
+
 
 root.mainloop()
